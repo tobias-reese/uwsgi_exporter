@@ -24,6 +24,8 @@ jobs:
       - name: Install snmp_exporter/generator dependencies
         run: sudo apt-get update && sudo apt-get -y install libsnmp-dev
         if: github.repository == 'prometheus/snmp_exporter'
+      - name: Install dependencies
+        runt: go install github.com/timonwong/loggercheck/cmd/loggercheck
       - name: Lint
         uses: golangci/golangci-lint-action@v3.2.0
         with:
