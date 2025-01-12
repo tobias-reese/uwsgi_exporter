@@ -126,7 +126,7 @@ func newHandler(metrics collector.Metrics, logger log.Logger) http.HandlerFunc {
 
 func handleProbe(logger log.Logger) http.HandlerFunc {
 	// Create a metrics map to store metrics for an specific target.
-	var metricsMap = sync.Map{}
+	metricsMap := sync.Map{}
 	return func(w http.ResponseWriter, r *http.Request) {
 		params := r.URL.Query()
 		target := params.Get("target")
