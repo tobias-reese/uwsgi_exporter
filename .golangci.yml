@@ -28,7 +28,7 @@ issues:
 
 linters-settings:
   depguard:
-    list-type: blacklist
+    list-mode: lax
     include-go-root: true
     packages:
       - sync/atomic
