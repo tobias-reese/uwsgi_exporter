@@ -37,4 +37,11 @@ linters-settings:
           - pkg: github.com/go-kit/kit/log
             desc: "Use github.com/go-kit/log instead of github.com/go-kit/kit/log"
   errcheck:
-    exclude: scripts/errcheck_excludes.txt
+    exclude-functions:
+      - io.Copy
+      - io.WriteString
+      - (net/http.ResponseWriter).Write
+      - (*net/http.Server).Shutdown
+      - (github.com/go-kit/log.Logger).Log
+
+
