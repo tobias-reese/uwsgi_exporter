@@ -72,7 +72,7 @@ func main() {
 		http.Handle("/", landingPage)
 	}
 	http.HandleFunc("/probe", handleProbe(logger))
-	http.HandleFunc("/-/healthy", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/-/healthy", func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(200)
 		io.WriteString(w, "ok")
 	})
@@ -125,7 +125,7 @@ func newHandler(metrics collector.Metrics, logger log.Logger) http.HandlerFunc {
 }
 
 func handleProbe(logger log.Logger) http.HandlerFunc {
-	// Create a metrics map to store metrics for an specific target.
+	// Create a metrics map to store metrics for a specific target.
 	metricsMap := sync.Map{}
 	return func(w http.ResponseWriter, r *http.Request) {
 		params := r.URL.Query()
